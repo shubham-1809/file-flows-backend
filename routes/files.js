@@ -57,11 +57,11 @@ router.post('/send', async (req, res) => {
         size: parseInt(file.size / 1000) + ' KB',
         expires: '24 hours'
       })
-    })//.then(() => {
+    }).then(() => {
     return res.json({ success: true });
-    /*}).catch(err => {
+    }).catch(err => {
       return res.status(500).json({ error: 'Error in email sending.' });
-    });*/
+    });
   } catch (err) {
     return res.status(500).send({ error: 'Something went wrong.' });
   }
