@@ -31,8 +31,8 @@ router.post('/', (req, res) => {
 });
 
 router.post('/send', async (req, res) => {
-  const { uuid, emailTo, emailFrom, expiresIn } = req.body;
-  if (!uuid || !emailTo || !emailFrom) {
+  const { uuid, emailTo, emailFrom, collegeName, studentName, rollNumber, branch, section, projectType, expiresIn } = req.body;
+  if (!uuid || !emailTo || !emailFrom || !collegeName || !studentName || !rollNumber || !branch || !section || !projectType) {
     return res.status(422).send({ error: 'All fields are required except expiry.' });
   }
   // Get data from db 
@@ -43,6 +43,12 @@ router.post('/send', async (req, res) => {
     }
     file.sender = emailFrom;
     file.receiver = emailTo;
+    file.collegeName = collegeName;
+    file.studentName = studentName;
+    file.rollNumber = rollNumber;
+    file.branchName = branch;
+    file.section = section;
+    file.projectType = projectType;
     const response = await file.save();
     // send mail
     const sendMail = require('../services/mailService');
@@ -55,7 +61,13 @@ router.post('/send', async (req, res) => {
         emailFrom,
         downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
         size: parseInt(file.size / 1000) + ' KB',
-        expires: '24 hours'
+        expires: '24 hours',
+        collegeName,
+        studentName, 
+        rollNumber,
+        branch,
+        section,
+        projectType
       })
     }).then(() => {
     return res.json({ success: true });

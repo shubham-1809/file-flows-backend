@@ -1,4 +1,4 @@
-module.exports = ({emailFrom, downloadLink, size, expires}) => {
+module.exports = ({ emailFrom, downloadLink, size, expires, collegeName, studentName, rollNumber, branch, section, projectType }) => {
     return `
         <!doctype html>
             <html>
@@ -114,8 +114,33 @@ module.exports = ({emailFrom, downloadLink, size, expires}) => {
                                 <tr>
                                 <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                                     <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi there,</p>
-                                    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><b>${emailFrom}</b> has shared a file with you.</p>
-                                    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">${size} in total ・ Expires in ${expires}</p>
+                                    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">${emailFrom} (<b>${studentName}</b>) has shared a project file with you.Below are the details:</p>
+    <table style="border-collapse: collapse; width: 100%;">
+        <tbody>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">College Name</td>
+                <td style = "text-transform: uppercase; border: 1px solid #ddd; padding: 8px; text-align: left;">${collegeName}</td>               
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">Student ID</td>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">${rollNumber}</td>              
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">Student name</td>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">${studentName}</td>              
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">Branch name</td>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">${branch}-${section}</td>              
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">Project Type</td>
+                <td style = "text-transform: capitalize; border: 1px solid #ddd; padding: 8px; text-align: left;">${projectType}</td>              
+            </tr>
+        </tbody>
+    </table>
+    <br>
+                                    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">${size} in total ・ Download Link Expires in ${expires}</p>
                                     <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                                     <tbody>
                                         <tr>
@@ -147,13 +172,13 @@ module.exports = ({emailFrom, downloadLink, size, expires}) => {
                         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                             <tr>
                             <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">inShare inc. main street 29, Moscow</span>
-                                <br> Want to share a file? <a href="http://localhost:3000" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">inShare</a>.
+                                <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">File Flows Service, Jabalpur, India</span>
+                                <br> Want to share a file? <a href="https://fileflows.onrender.com" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">FileFlows</a>.
                             </td>
                             </tr>
                             <tr>
                             <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                Powered by <a href="https://www.youtube.com/channel/UCo9xTRmg1SqQ5JSsA2fAgJw" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">Coders Gyan</a>.
+                                Powered by <a href="https://shubham-1809.github.io/My-Personal-Portfolio/" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">Engineer's Palette</a>.
                             </td>
                             </tr>
                         </table>
